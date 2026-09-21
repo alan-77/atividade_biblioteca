@@ -1,0 +1,93 @@
+<%- include("partials/header") %>
+<article class="mt-6">
+    <header class="mb-6">
+        <hgroup>
+            <h2 class="text-3xl font-bold">
+                Meus Livros
+            </h2>
+            <p class="text-gray-600 mt-2">
+                Confira todos os livros cadastrados na sua estante.
+            </p>
+        </hgroup>
+    </header>
+    <% if (livros.length === 0) { %>
+        <section class="bg-white rounded-xl shadow p-8 text-center">
+            <h3 class="text-xl font-semibold mb-3">
+                Sua estante está vazia
+            </h3>
+            <p class="text-gray-600 mb-5">
+                Cadastre seu primeiro livro para começar.
+            </p>
+            <a
+                href="/livros/novo"
+                class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+            >
+                Cadastrar livro
+            </a>
+        </section>
+    <% } else { %>
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% livros.forEach((livro, index) => { %>
+                <article class="bg-white rounded-xl shadow-md p-6">
+                    <header class="mb-4">
+                        <h3 class="text-xl font-bold">
+                            <%= livro.titulo %>
+                        </h3>
+                        <p class="text-gray-500">
+                            <%= livro.autor %>
+                        </p>
+                    </header>
+                    <section class="space-y-2">
+                        <p>
+                            <strong>Páginas:</strong>
+                            <%= livro.paginas %>
+                        </p>
+                        <p>
+                            <strong>Status:</strong>
+                            <% if (livro.status === "Lido") { %>
+
+                                <span class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                                    Lido
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
+                                    Lendo
+                                </span>
+
+                            <% } %>
+                        </p>
+                    </section>
+
+                    <menu class="mt-6 flex flex-col gap-2">
+                        <li>
+                            <a
+                                href="/livros/status/<%= index %>"
+                                class="block text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                            >
+
+                                <% if (livro.status === "Lendo") { %>
+                                    Marcar como Lido
+                                <% } else { %>
+                                    Marcar como Lendo
+                                <% } %>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/livros/remover/<%= index %>"
+                                onclick="return confirm('Deseja excluir este livro da sua estante?')"
+                                class="block text-center bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+                            >
+                                Remover livro
+                            </a>
+                        </li>
+                    </menu>
+                </article>
+            <% }); %>
+        </section>
+    <% } %>
+</article>
+<%- include("partials/footer") %>

@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+    <article class="bg-white rounded-xl shadow-lg p-8 mt-6">
+        <header class="mb-6">
+            <hgroup>
+                <h2 class="text-3xl font-bold text-gray-800">
+                    Bem-vindo à Minha Estante!
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    Organize seus livros e acompanhe o progresso das
+                    suas leituras.
+                </p>
+            </hgroup>
+        </header>
+        <section class="bg-blue-50 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-3">
+                Sua biblioteca pessoal
+            </h3>
+            <p class="text-gray-600 mb-6">
+                Cadastre seus livros, acompanhe quais estão sendo lidos
+                e marque aqueles que você já concluiu.
+            </p>
+            <menu class="flex flex-wrap gap-4">
+                <li>
+                    <a href="/livros"
+                        class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                        Acessar minha estante
+                    </a>
+                </li>
+                <li>
+                    <a href="/livros/novo"
+                        class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+                        Cadastrar novo livro
+                    </a>
+                </li>
+            </menu>
+        </section>
+    </article>
+    <%- include("partials/footer") %>
